@@ -1,10 +1,13 @@
 import React from 'react';
+import { MyFirstComponent } from './components/myfirstcomponent/MyFirstComponent'
+import { Routing } from './routes/Routing'
 
 function App() {
   return (
-   <>
-     <h1>React Tutorial!</h1>
-   </>
+    <Routing>
+      <h1>React Tutorial!</h1>
+      < MyFirstComponent name="Arasto" age="27" />
+    </Routing>
   );
 }
 
