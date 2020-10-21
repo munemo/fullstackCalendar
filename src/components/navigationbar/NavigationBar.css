@@ -17,3 +17,8 @@
 .signIn {
     cursor: pointer;
 }
+
+.profile {
+    grid-column: 8/10;
+    align-self: center;
+}

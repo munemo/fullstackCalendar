@@ -16,7 +16,6 @@ export const SignInView = () => {
             <span> Username: </span> <input onChange={event => setUsername(event.target.value)} /> <br />
             <span> Password: </span> <input type="password" onChange={event => setPassword(event.target.value)} /> <br />
             <button onClick={() => login()}>Login</button>
-            <button onClick={() => alert(authenticatedUser)}>Show authenticated user!</button>
         </div>
     )
 }
