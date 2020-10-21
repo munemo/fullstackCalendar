@@ -7,9 +7,9 @@ export const SignInView = () => {
 
     return (
         <div>
-            <span>Username: </span><input onChange={event => setLoggedInUser(event.target.value)} /> <br />
-            <span>Password: </span><input type="password" onChange={event => setPassword(event.target.value)} /> <br />
+            <span> Username: </span> <input onChange={event => setLoggedInUser(event.target.value)} /> <br />
+            <span> Password: </span> <input type="password" onChange={event => setPassword(event.target.value)} /> <br />
             <button>Login</button>
-        </div >
+        </div>
     )
 }
