@@ -4,6 +4,8 @@ import { RecipeView } from '../view/RecipeView'
 import { HomeView } from '../view/HomeView'
 import { SignInView } from '../view/SignInView'
 import { UserContext } from '../shared/global/provider/UserProvider'
+import { ProfileView } from '../view/ProfileView'
+import { SettingsView } from '../view/SettingsView'
 
 
 export const Routing = (props) => {
@@ -23,6 +25,8 @@ export const Routing = (props) => {
             <Switch>
                 <Route exact path="/recipe" component={RecipeView} />
                 <Route exact path="/signin" component={SignInView} />
+                <Route exact path="/profile" component={ProfileView} />
+                <Route exact path="/settings" component={SettingsView} />
                 <Route component={HomeView} />
             </Switch>
         </Router>
