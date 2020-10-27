@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import Axios from 'axios'
+import PokemonService from '../shared/api/service/PokemonService'
 
 export const HomeView = () => {
     const [data, setData] = useState()
     const [search, setSearch] = useState("")
 
     const fetchDataFromExternalAPI = () => {
-        Axios.get(`https://pokeapi.co/api/v2/pokemon/${search.toLowerCase()}`)
+        PokemonService.searchForPokemon(search.toLowerCase())
             .then((response) => setData(response.data))
             .catch((error) => console.log(error))
     }
