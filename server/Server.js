@@ -6,5 +6,5 @@ const app = express()
 const port = process.env.PORT
 
 app.listen(port, () => {
-    console.log(`Servern är igång på port ${port}`)
+	console.log(`Servern är igång på port ${port}`)
 })
