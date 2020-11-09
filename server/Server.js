@@ -5,6 +5,7 @@ import morgan from 'morgan'
 import bodyParser from 'body-parser'
 import middlewares from './src/middlewares/Middlewares.js'
 import Configuration from './configuration/Configuration.js'
+import UserRoutes from './src/routes/User.routes.js'
 
 dotenv.config()
 const app = express()
@@ -17,6 +18,7 @@ app.get('/recipe', (req, res) => {
 	res.send('Pancakes!')
 })
 
+UserRoutes.routes(app)
 app.use(middlewares.notFound)
 app.use(middlewares.errorHandler)
 

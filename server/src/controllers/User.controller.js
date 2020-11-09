@@ -8,7 +8,7 @@ const createUser = async (req, res) => {
 	})
 
 	try {
-		const response = user.save()
+		const response = await user.save()
 		res.status(201).send(response)
 	} catch (error) {
 		res.status(500).send({ message: error.message })
