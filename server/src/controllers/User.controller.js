@@ -23,7 +23,20 @@ const getAllUsers = async (req, res) => {
 	}
 }
 
+const getUserWithId = async (req, res) => {
+	try {
+		const response = await UserModel.findById(req.params.userId)
+		res.status(200).send(response)
+	} catch (error) {
+		res.status(500).send({
+			message: 'Error occured while trying to retrieve user with ID: ' + req.params.userId,
+			error: error.message
+		})
+	}
+}
+
 export default {
 	createUser,
-	getAllUsers
+	getAllUsers,
+	getUserWithId
 }
