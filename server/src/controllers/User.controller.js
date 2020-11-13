@@ -1,4 +1,5 @@
 import UserModel from '../models/User.model.js'
+import StatusCode from '../../configuration/StatusCode.js'
 
 const createUser = async (req, res) => {
 	const user = new UserModel({
@@ -8,27 +9,27 @@ const createUser = async (req, res) => {
 
 	try {
 		const response = await user.save()
-		res.status(201).send(response)
+		res.status(StatusCode.CREATED).send(response)
 	} catch (error) {
-		res.status(500).send({ message: error.message })
+		res.status(StatusCode.INTERNAL_SERVER_ERROR).send({ message: error.message })
 	}
 }
 
 const getAllUsers = async (req, res) => {
 	try {
 		const response = await UserModel.find()
-		res.status(200).send(response)
+		res.status(StatusCode.OK).send(response)
 	} catch (error) {
-		res.status(500).send({ message: error.message })
+		res.status(StatusCode.INTERNAL_SERVER_ERROR).send({ message: error.message })
 	}
 }
 
 const getUserWithId = async (req, res) => {
 	try {
 		const response = await UserModel.findById(req.params.userId)
-		res.status(200).send(response)
+		res.status(StatusCode.OK).send(response)
 	} catch (error) {
-		res.status(500).send({
+		res.status(StatusCode.INTERNAL_SERVER_ERROR).send({
 			message: 'Error occured while trying to retrieve user with ID: ' + req.params.userId,
 			error: error.message
 		})
@@ -39,11 +40,11 @@ const getUserWithUsernameQuery = async (req, res) => {
 	try {
 		const response = await UserModel.find({ username: req.query.username })
 		response.length !== 0
-			? res.status(200).send(response)
-			: res.status(404).send({ message: 'Could not find user with username ' + req.query.username })
+			? res.status(StatusCode.OK).send(response)
+			: res.status(StatusCode.NOT_FOUND).send({ message: 'Could not find user with username ' + req.query.username })
 
 	} catch (error) {
-		res.status(500).send({
+		res.status(StatusCode.INTERNAL_SERVER_ERROR).send({
 			message: 'Error occured while trying to retrieve user with username: ' + req.query.userId,
 			error: error.message
 		})
@@ -52,14 +53,14 @@ const getUserWithUsernameQuery = async (req, res) => {
 
 const updateUser = async (req, res) => {
 	try {
-		if (!req.body) { return res.status(400).send({ message: 'cannot update empty values' }) }
+		if (!req.body) { return res.status(StatusCode.BAD_REQUEST).send({ message: 'cannot update empty values' }) }
 		const response = await UserModel.findByIdAndUpdate(req.params.userId, {
 			username: req.body.username,
 			password: req.body.password
 		}, { new: true })
-		res.status(200).send(response)
+		res.status(StatusCode.OK).send(response)
 	} catch (error) {
-		res.status(500).send({
+		res.status(StatusCode.INTERNAL_SERVER_ERROR).send({
 			message: 'Error occured while trying to update values of the user with ID: ' + req.params.userId,
 			error: error.message
 		})
@@ -69,11 +70,11 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
 	try {
 		const response = await UserModel.findByIdAndDelete(req.params.userId)
-		res.status(200).send({
+		res.status(StatusCode.OK).send({
 			message: `Sucessfully deleted the USER with username: ${response.username} and ID: ${req.params.userId}`
 		})
 	} catch (error) {
-		res.status(500).send({
+		res.status(StatusCode.INTERNAL_SERVER_ERROR).send({
 			message: 'Error occured while trying to delete user with the ID: ' + req.params.userId,
 			error: error.message
 		})
