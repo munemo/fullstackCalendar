@@ -10,34 +10,34 @@ import RoutingPath from './RoutingPath'
 
 
 export const Routing = (props) => {
-    const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
+	const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
 
-    const blockRouteIfAuthenticated = (navigateToView) => {
-        return authenticatedUser ? HomeView : navigateToView
-    }
+	const blockRouteIfAuthenticated = (navigateToView) => {
+		return authenticatedUser ? HomeView : navigateToView
+	}
 
-    const blockRouteIfNotAuthenticated = (navigateToView) => {
-        return !authenticatedUser ? SignInView : navigateToView
-    }
+	const blockRouteIfNotAuthenticated = (navigateToView) => {
+		return !authenticatedUser ? SignInView : navigateToView
+	}
 
-    const checkIfUserIsAuthenticatedInBrowser = () => {
-        setAuthenticatedUser(localStorage.getItem("username"))
-    }
+	const checkIfUserIsAuthenticatedInBrowser = () => {
+		setAuthenticatedUser(localStorage.getItem("username"))
+	}
 
-    useEffect(() => {
-        checkIfUserIsAuthenticatedInBrowser()
-    })
+	useEffect(() => {
+		checkIfUserIsAuthenticatedInBrowser()
+	})
 
-    return (
-        <Router>
-            {props.children}
-            <Switch>
-                <Route exact path={RoutingPath.recipeView} component={RecipeView} />
-                <Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
-                <Route exact path={RoutingPath.profileView} component={blockRouteIfNotAuthenticated(ProfileView)} />
-                <Route exact path={RoutingPath.settingsView} component={blockRouteIfNotAuthenticated(SettingsView)} />
-                <Route component={HomeView} />
-            </Switch>
-        </Router>
-    )
+	return (
+		<Router>
+			{props.children}
+			<Switch>
+				<Route exact path={RoutingPath.recipeView} component={RecipeView} />
+				<Route exact path={RoutingPath.signInView} component={blockRouteIfAuthenticated(SignInView)} />
+				<Route exact path={RoutingPath.profileView} component={blockRouteIfNotAuthenticated(ProfileView)} />
+				<Route exact path={RoutingPath.settingsView} component={blockRouteIfNotAuthenticated(SettingsView)} />
+				<Route component={HomeView} />
+			</Switch>
+		</Router>
+	)
 }
