@@ -5,6 +5,7 @@ import cors from 'cors'
 import middlewares from './src/middlewares/Middlewares.js'
 import Configuration from './configuration/Configuration.js'
 import UserRoutes from './src/routes/User.routes.js'
+import { config } from 'dotenv'
 
 const app = express()
 app.use(helmet())
@@ -13,11 +14,7 @@ app.use(cors({credential: true}))
 app.use(morgan('common'))
 app.use(helmet())
 
-app.get('/recipe', (req, res) => {
-	res.send('Pancakes!')
-})
-
-UserRoutes.routes(app)
+UserRoutes.Routes(app)
 app.use(middlewares.notFound)
 app.use(middlewares.errorHandler)
 
