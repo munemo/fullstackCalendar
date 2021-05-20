@@ -1,15 +1,14 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
+const { Schema } = mongoose;
 
+const bookingSchema = Schema({
+	date: { type: Date, required: true, allowNull: false },
+	starttime: { type: Date, required: true, allowNull: false },
+    bookedByUser: {
+        type: Schema.Types.ObjectId,
+        ref: 'user'
+    }
+})
 
-const BookingSchema = mongoose.Schema(
-	
-	{
-		slot_time: String,
-		slot_date: Date
-	}, { timestamps: true,  allowNull: false, required: true, lowercase: true, minlength: [5, 'must be longer than 5 characters'],
-        maxlength: [20, 'max length exceeded'] },
-
-)
-
-const BookingModel = mongoose.model('slot', BookingSchema)
-export default BookingModel
+const EquipmentModel = mongoose.model('booking', bookingSchema)
+export default EquipmentModel;

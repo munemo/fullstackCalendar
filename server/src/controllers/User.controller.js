@@ -3,9 +3,8 @@ import StatusCode from '../../configuration/StatusCode.js'
 
 const createUser = async (req, res) => {
 	const user = new UserModel({
-		username: req.body.username,
-		password: req.body.password,
 		email: req.body.email,
+		password: req.body.password,
 		apartment_nr: req.body.apartment_nr
 	})
 
@@ -40,7 +39,7 @@ const getUserWithId = async (req, res) => {
 
 const getUserWithUsernameQuery = async (req, res) => {
 	try {
-		const response = await UserModel.find({ username: req.query.username })
+		const response = await UserModel.find({ email: req.query.email })
 		response.length !== 0
 			? res.status(StatusCode.OK).send(response)
 			: res.status(StatusCode.NOT_FOUND).send({ message: 'Could not find user with username ' + req.query.username })
@@ -57,8 +56,8 @@ const updateUser = async (req, res) => {
 	try {
 		if (!req.body) { return res.status(StatusCode.BAD_REQUEST).send({ message: 'cannot update empty values' }) }
 		const response = await UserModel.findByIdAndUpdate(req.params.userId, {
-			username: req.body.username,
-			password: req.body.password
+			email: req.body.email,
+			apartment_nr: req.body.apartment_nr
 		}, { new: true })
 		res.status(StatusCode.OK).send(response)
 	} catch (error) {
@@ -73,7 +72,7 @@ const deleteUser = async (req, res) => {
 	try {
 		const response = await UserModel.findByIdAndDelete(req.params.userId)
 		res.status(StatusCode.OK).send({
-			message: `Sucessfully deleted the USER with username: ${response.username} and ID: ${req.params.userId}`
+			message: `Sucessfully deleted the USER with username: ${response.email} and ID: ${req.params.userId}`
 		})
 	} catch (error) {
 		res.status(StatusCode.INTERNAL_SERVER_ERROR).send({
