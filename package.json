@@ -12,7 +12,7 @@
     "test": "mocha 'tests/**' ",
     "dev": "nodemon Server.js",
     "deploy": "git push heroku master",
-    "add-client": "cd ../client && yarn add",
+    "add-client": "cd ../client && yarn install",
     "build-client": "cd ../client && yarn run build",
     "heroku-postbuild": "yarn run add-client && yarn build-client"
   },
