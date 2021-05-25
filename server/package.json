@@ -8,6 +8,8 @@
     "test": "mocha 'tests/**' ",
     "dev": "nodemon Server.js",
     "deploy": "git push heroku master",
+    "add-fullstackCalendar": "cd fullstackCalendar && yarn add",
+    "build-fullstackCalendar": "cd cd fullstackCalendar && yarn run build",
     "heroku-postbuild": "yarn run build"
   },
   "dependencies": {
@@ -29,3 +31,4 @@
     "nodemon": "^2.0.7"
   }
 }
+
