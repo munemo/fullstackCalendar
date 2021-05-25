@@ -8,9 +8,9 @@
     "test": "mocha 'tests/**' ",
     "dev": "nodemon Server.js",
     "deploy": "git push heroku master",
-    "add-client": "cd ../client && yarn add",
-    "build-client": "cd ../client && yarn run build",
-    "heroku-postbuild": "yarn run add-client && yarn build-client"
+    "add-client": "cd ../client && npm install",
+    "build-client": "cd ../client && npm run build",
+    "heroku-postbuild": "npm run install-client && npm build-client"
   },
   "dependencies": {
     "cors": "^2.8.5",
