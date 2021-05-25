@@ -1,6 +1,10 @@
 {
   "name": "calendarbackend",
   "version": "1.0.0",
+  "engines": {
+    "node": "16.2.0",
+    "yarn": "1.22.5"
+  },
   "main": "Server.js",
   "type": "module",
   "license": "MIT",
@@ -8,9 +12,9 @@
     "test": "mocha 'tests/**' ",
     "dev": "nodemon Server.js",
     "deploy": "git push heroku master",
-    "install-client": "../client && npm install",
-    "build-client": "../client && npm run build",
-    "heroku-postbuild": "npm run install-client && npm build-client"
+    "add-client": "../client && yarn add",
+    "build-client": "../client && yarn run build",
+    "heroku-postbuild": "yarn run add-client && yarn build-client"
   },
   "dependencies": {
     "cors": "^2.8.5",
