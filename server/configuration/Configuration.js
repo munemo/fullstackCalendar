@@ -8,7 +8,7 @@ const { PORT, DEV_DATABASE_URL,
 
 const connectToPort = async (app) => {
 	try {
-		await app.listen(PORT, () => {
+		await app.listen(process.env.PORT || PORT, () => {
 			console.log(`✔️ SERVER RUNNING ON ${PORT}`);
 		})
 	} catch (error) {
