@@ -9,7 +9,7 @@ const userSchema = Schema({
 
     password: { type: String, required: true, allowNull: false , minlength: [5, 'password must be longer than 5 characters'] },
 
-    bookedSlot: [{
+    bookedTime: [{
         type: Schema.Types.ObjectId,
         ref: 'slot'
     }]

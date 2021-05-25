@@ -57,8 +57,9 @@ const updateUser = async (req, res) => {
 		if (!req.body) { return res.status(StatusCode.BAD_REQUEST).send({ message: 'cannot update empty values' }) }
 		const response = await UserModel.findByIdAndUpdate(req.params.userId, {
 			email: req.body.email,
+			password: req.body.password,
 			apartment_nr: req.body.apartment_nr
-		}, { new: true })
+		},)
 		res.status(StatusCode.OK).send(response)
 	} catch (error) {
 		res.status(StatusCode.INTERNAL_SERVER_ERROR).send({

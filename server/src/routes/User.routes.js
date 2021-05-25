@@ -7,8 +7,9 @@ const Routes = (app) => {
 	app.get('/user/find/:userId', UserController.getUserWithId)
 	app.get('/user/query', UserController.getUserWithUsernameQuery)
 	app.put('/user/update/:userId', UserController.updateUser)
-	app.delete('/user/delete/:userId', UserController.deleteUser)
+	app.delete('/user/:userId', UserController.deleteUser)
 	app.post('/slot', SlotsController.createSlot)
+	app.get('/slots/all', SlotsController.getAllSlots)
 
 }
 

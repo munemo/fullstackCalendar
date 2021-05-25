@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import express from 'express'
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -33,7 +34,25 @@ const connectToDatabase = async () => {
 	}
 }
 
+
+const serveStaticFiles = async (app) => {
+	try {
+		await app.listen(PORT, () => {
+			app.use(express.static("../client/build"))
+			app.get("*",(req,res) => {
+					res.sendFile("../client/build/index.html")
+
+			})
+			console.log(`✔️ Static files getting served ON ${PORT}`);
+		})
+	} catch (error) {
+		console.error(`❌  ERROR OCCURED WHILE CONNECTING TO ${PORT}`)
+	}
+}
+
+
 export default {
 	connectToDatabase,
-	connectToPort
+	connectToPort,
+	serveStaticFiles
 }

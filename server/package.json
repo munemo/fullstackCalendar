@@ -1,9 +1,15 @@
 {
   "name": "calendarbackend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "Server.js",
   "type": "module",
   "license": "MIT",
+  "scripts": {
+    "test": "mocha 'tests/**' ",
+    "dev": "nodemon Server.js",
+    "deploy": "git push heroku master",
+    "heroku-postbuild": "yarn run build"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^9.0.0",
@@ -11,7 +17,9 @@
     "helmet": "^4.6.0",
     "mongoose": "^5.12.8",
     "morgan": "^1.10.0",
-    "nexmo": "^2.9.1"
+    "nexmo": "^2.9.1",
+    "node-static": "^0.7.11",
+    "requirejs": "^2.3.6"
   },
   "devDependencies": {
     "chai": "^4.3.4",
