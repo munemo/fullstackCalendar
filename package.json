@@ -8,9 +8,9 @@
     "test": "mocha 'tests/**' ",
     "dev": "nodemon Server.js",
     "deploy": "git push heroku master",
-    "add-fullstackCalendar": "cd fullstackCalendar && yarn add",
-    "build-fullstackCalendar": "cd cd fullstackCalendar && yarn run build",
-    "heroku-postbuild": "yarn run build"
+    "add-client": "cd ../client && yarn add",
+    "build-client": "cd ../client && yarn run build",
+    "heroku-postbuild": "yarn run add-client && yarn build-client"
   },
   "dependencies": {
     "cors": "^2.8.5",

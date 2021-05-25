@@ -1,13 +1,15 @@
 const homeView = "/"
-const recipeView = "/recipe"
+const registerView = "/register"
 const signInView = "/signin"
 const profileView = "/profile"
 const settingsView = "/settings"
+const bookingView = "/bookings"
 
 export default {
     homeView,
-    recipeView,
     signInView,
     profileView,
-    settingsView
+    settingsView,
+    registerView,
+    bookingView
 }
