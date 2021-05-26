@@ -8,7 +8,12 @@
   "private": true,
   "type": "module",
 
+  "engines": {
+    "node": "16.2.0"
+  },
+
   "scripts": {
+    "start": "node Server.js", 
   "install-frontend": "cd frontend && yarn add frontend",
   "build-frontend": "cd frontend && yarn run build",
   "heroku-postbuild": "yarn run install-frontend && yarn run build-frontend"
