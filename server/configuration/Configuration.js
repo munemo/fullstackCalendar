@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-import express from 'express'
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -9,7 +8,7 @@ const { PORT, DEV_DATABASE_URL,
 
 const connectToPort = async (app) => {
 	try {
-		await app.listen(PORT, () => {
+		await app.listen(process.env.PORT || PORT, () => {
 			console.log(`✔️ SERVER RUNNING ON ${PORT}`);
 		})
 	} catch (error) {

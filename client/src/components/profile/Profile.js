@@ -21,6 +21,7 @@ export const Profile = () => {
             <div className="profileDropdown">
                 <a onClick={() => history.push(RoutingPath.settingsView)}>Settings</a>
                 <a onClick={() => history.push(RoutingPath.profileView)}>Profile</a>
+                <a onClick={() => history.push(RoutingPath.bookingView)}>Bookings</a>
                 <hr />
                 <a onClick={() => logout()}>Logout</a>
             </div>

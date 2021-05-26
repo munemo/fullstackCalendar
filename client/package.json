@@ -1,11 +1,18 @@
 {
+  "webpage": "https://github.com/munemo/fullstackCalendar/tree/crud",
   "name": "calendar",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "axios": "^0.21.0",
+    "axios-react": "^2.0.7",
     "cra-template": "1.0.3",
+    "fullcalendar": "^5.7.0",
+    "gh": "^2.8.9",
+    "gh-pages": "^3.2.0",
+    "pages": "^0.0.16",
     "react": "^16.14.0",
+    "react-calendar": "^3.4.0",
     "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3"
