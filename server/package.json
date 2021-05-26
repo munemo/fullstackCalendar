@@ -1,0 +1,20 @@
+{
+  "name": "calendar__server",
+  "version": "1.0.0",
+  "description": "node server for calendar",
+  "main": "Server.js",
+  "author": "john chimbani",
+  "license": "MIT",
+  "type": "module",
+
+  "dependencies": {
+    "cross-env": "5.0.5",
+    "calendar_frontend": "1.0.0"
+
+  }
+
+
+
+}
+
+
