@@ -20,6 +20,6 @@ app.use(middlewares.errorHandler)
 
 Configuration.connectToDatabase()
 Configuration.connectToPort(app)
-app.use(express.static(("../client/build")))
+app.use(express.static(("cd frontend/build")))
 
 export default app
